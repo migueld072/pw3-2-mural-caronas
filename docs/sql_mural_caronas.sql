@@ -1,0 +1,20 @@
+CREATE DATABASE mural_caronas;
+USE mural_caronas;
+
+CREATE TABLE TBL_CARONA (
+    ID_CARONA               BIGINT IDENTITY(1,1) NOT NULL,
+    TX_NOME_MOTORISTA_LIDER VARCHAR(100)         NOT NULL,
+    TX_BAIRRO_ORIGEM        VARCHAR(100)         NOT NULL,
+    HR_SAIDA                TIME                 NOT NULL,
+    NR_VAGAS_DISPONIVEIS    INT                  NOT NULL,
+    TX_STATUS               VARCHAR(20)          NOT NULL DEFAULT 'DISPONIVEL',
+
+    CONSTRAINT PK_TBL_CARONA PRIMARY KEY (ID_CARONA),
+    CONSTRAINT CK_TBL_CARONA_STATUS CHECK (TX_STATUS IN ('DISPONIVEL', 'LOTADO'))
+);
+
+INSERT INTO TBL_CARONA (TX_NOME_MOTORISTA_LIDER, TX_BAIRRO_ORIGEM, HR_SAIDA, NR_VAGAS_DISPONIVEIS, TX_STATUS)
+VALUES
+    ('Carlos Souza',  'Vila Mariana', '06:45', 3, 'DISPONIVEL'),
+    ('Ana Lima',      'Saúde',        '07:00', 2, 'DISPONIVEL'),
+    ('Grupo Caminhada Centro', 'Centro', '06:30', 0, 'LOTADO');
