@@ -8,6 +8,5 @@ import java.util.List;
 
 public interface CaronaRepository extends JpaRepository<Carona, Long> {
 
-    // Usado no filtro GET /api/caronas?status=DISPONIVEL (Aula 2)
     List<Carona> findByStatus(StatusCarona status);
 }
